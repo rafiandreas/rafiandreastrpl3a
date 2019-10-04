@@ -78,14 +78,14 @@
                                 
                              <div class="captcha">
                                   <span>{!! captcha_img() !!}</span>
-                                 <button type="button" class="btn btn-success btn-refresh">Refresh</button>
+                                 <button type="button" class="btn btn-success btn-refresh"><a style="text-decoration:none;color:white" href="{{route('register')}}">Refresh</a></button>
                             </div>
-                        <input type="text" id="captcha" class="form-control" placeholder="Enter Captcha" name="captcha">
-                        @if ($errors->has ('captcha'))
-                             <span class="help-block">
-                                        <strong>{{ $errors->first('captcha') }}</strong>
+                        <input type="captcha" id="captcha" class="form-control" placeholder="Enter Captcha" name="captcha">
+                                @error('captcha'))
+                             <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
                         </div>
 

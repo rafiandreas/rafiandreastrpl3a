@@ -36,4 +36,18 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    protected function create(array $data)
+    {
+        return user::create([
+            'nama' => $data ['nama'],
+            'email' => $data ['email'],
+            'contact' => $data ['contact'],
+            'password' =>hash::make( $data ['nama']),
+        ]);
+
+    }
+    public function refreshcaptcha()
+    {
+        return captcha_img('flat');    
+    }
 }
